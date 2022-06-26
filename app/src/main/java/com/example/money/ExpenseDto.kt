@@ -1,3 +1,6 @@
 package com.example.money
 
-class ExpenseDto(val name: String, val cost: Int)
+import kotlinx.serialization.Serializable
+
+@Serializable
+data class ExpenseDto(val name: String, val cost: Int)
