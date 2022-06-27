@@ -1,28 +1,23 @@
 package com.example.money
 
 import android.os.Bundle
-import android.widget.LinearLayout
-import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
+import androidx.recyclerview.widget.RecyclerView
 
 class MainActivity : AppCompatActivity() {
-    private val service: ExpensesService = ExpensesService()
+    private val service : ExpensesService = ExpensesService()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        initializeExpenses()
+        val expenses = initializeExpenses()
+        val recyclerView = findViewById<RecyclerView>(R.id.recyclerView)
+        val adapter = ExpenseAdapter(expenses)
+        recyclerView.adapter = adapter
     }
 
-    private fun initializeExpenses(){
-        val expenses = service.getExpenses()
-        val layout = findViewById<LinearLayout>(R.id.linearLayout)
-
-        for (e in expenses){
-            val textView = TextView(baseContext)
-            textView.text = "${e.name} : ${e.cost}"
-            layout.addView(textView)
-        }
+    private fun initializeExpenses(): List<ExpenseDto> {
+        return service.getExpenses()
     }
 }

@@ -22,7 +22,7 @@ class ExpensesService {
                 .build()
             StrictMode.setThreadPolicy(policy)
 
-            val url = URL("http://51.250.27.32/money/api/expenses/")
+            val url = URL("http://84.252.143.247/money/api/expenses/")
             with(url.openConnection() as HttpURLConnection) {
                 inputStream.bufferedReader().use {
                     return it.readText()
