@@ -1,6 +1,8 @@
 package com.example.money
 
+import android.content.Intent
 import android.os.Bundle
+import android.view.View
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.RecyclerView
 
@@ -15,6 +17,12 @@ class MainActivity : AppCompatActivity() {
         val recyclerView = findViewById<RecyclerView>(R.id.recyclerView)
         val adapter = ExpenseAdapter(expenses)
         recyclerView.adapter = adapter
+    }
+
+    public fun onCreateClick(view : View)
+    {
+        val intent = Intent(this, CreateExpenseActivity::class.java)
+        startActivity(intent)
     }
 
     private fun initializeExpenses(): List<ExpenseDto> {
